@@ -1,0 +1,30 @@
+NEMESIS/
+│── core/                     # Core framework logic
+│   ├── exploitation/         # AI-powered exploit selection
+│   │   ├── exploit_ai.py     # AI model for exploit selection
+│   │   ├── shellcode_gen.py  # Machine code payload generator
+│   │   ├── memory_exec.py    # In-memory execution techniques
+│   │   ├── evasive_loader.py # EDR/WAF evasion mechanisms
+│   │   ├── hypervisor_rootkit.c # Hypervisor attack module
+│   ├── c2/                   # Covert Command & Control
+│   │   ├── dns_stego.py      # DNS-over-HTTPS covert channel
+│   │   ├── icmp_tunnel.py    # ICMP tunneling for exfiltration
+│   │   ├── stegano_http.py   # HTTP steganography-based C2
+│   ├── persistence/          # Persistence mechanisms
+│   │   ├── firmware_backdoor.c # Firmware-level persistence
+│   │   ├── uefi_rootkit.c    # UEFI/BIOS-level stealth module
+│   ├── kernel/               # Low-level kernel interaction
+│   │   ├── syscall_hooker.c  # Syscall hooking for stealth
+│   │   ├── dkom_hide_proc.c  # Direct Kernel Object Manipulation (DKOM)
+│   │   ├── mem_injector.c    # Memory injection techniques
+│── configs/                  # Configuration files
+│   ├── nemesis.yaml          # Main configuration settings
+│   ├── payloads.json         # Customizable payload settings
+│── utils/                    # Support utilities
+│   ├── obfuscator.py         # Code obfuscation for stealth
+│   ├── encryptor.py          # AES encryption for payloads
+│── docs/                     # Documentation
+│   ├── architecture.md       # High-level design
+│   ├── deployment.md         # Setup & installation
+│── LICENSE                   # Licensing terms
+│── README.md                 # Project overview
