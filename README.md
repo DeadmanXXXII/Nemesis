@@ -23,37 +23,49 @@ Core Components
 1. Binary Payload Engine
 
 ✅ Dynamic machine code generation based on CPU type (x86, ARM, MIPS, RISC-V, etc.)
+
 ✅ Direct processor exploitation (ROP, JIT spraying, kernel-mode execution)
+
 ✅ AI-based obfuscation of opcodes for evasion
 
 2. AI-Driven Exploitation Engine
 
 ✅ Machine learning model detects & adjusts attack vectors in real time
+
 ✅ Automated selection of most effective payload per target environment
+
 ✅ Reinforcement learning to improve attack success rates over time
 
 3. Advanced Memory & Kernel Manipulation
 
 ✅ Ring-0 / kernel privilege escalation
+
 ✅ Direct kernel memory manipulation (bypassing syscall hooks)
+
 ✅ Firmware, UEFI, and SMM persistence techniques
 
 4. Covert C2 & Stealth Communication
 
 ✅ ICMP/DNS tunneling, encrypted raw sockets, GPU-based exfiltration
+
 ✅ Side-channel attacks leveraging electromagnetic emissions & power analysis
+
 ✅ Hiding payloads in hardware (e.g., CPU caches, disk firmware, BIOS)
 
 5. Evasion & Anti-Detection
 
 ✅ Self-modifying, polymorphic machine code
+
 ✅ Execution in encrypted memory regions to avoid forensic detection
+
 ✅ Uses direct syscalls instead of API hooks to bypass AV/EDR logging
 
 6. Autonomous & Augmented Operation
 
 ✅ Autonomous attack selection, execution, and adaptation
+
 ✅ Augmented mode allows manual input with AI assistance
+
 ✅ Multi-targeting & parallel execution for large-scale red teaming
 
 
@@ -222,9 +234,13 @@ Phase 3: Testing & Optimization
 Final Thoughts
 
 ✅ AI-driven, binary-based red teaming tool
+
 ✅ Bypasses all modern defenses (EDR, WAF, CDNs, honeypots, etc.)
+
 ✅ Works at the machine code level for undetectable execution
+
 ✅ Autonomous operation with AI-assisted augmentation
+
 
 NEMESIS is a full-scale red teaming revolution.
 
@@ -275,6 +291,7 @@ NEMESIS/
 📂 core/exploitation/
 
 📝 exploit_ai.py (AI-Powered Exploit Selector)
+
 ```python
 import torch
 import torch.nn as nn
@@ -303,6 +320,7 @@ model = ExploitSelector(input_size=10, hidden_size=20, output_size=len(data))
 ---
 
 📝 shellcode_gen.py (Machine Code Payload Generator)
+
 ```python
 shellcode = (
     b"\x48\x31\xc0\x48\x89\xc2\x48\x89"
@@ -320,6 +338,7 @@ print("Generated raw machine-code payload.")
 📂 core/kernel/
 
 📝 dkom_hide_proc.c (Linux Kernel Process Hiding)
+
 ```C
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -358,6 +377,7 @@ MODULE_LICENSE("GPL");
 ---
 
 📝 mem_injector.c (Windows Memory Injection)
+
 ```C
 #include <windows.h>
 #include <stdio.h>
@@ -377,6 +397,7 @@ int main() {
 📂 core/c2/
 
 📝 dns_stego.py (DNS Over HTTPS Covert Channel)
+
 ```python
 import requests
 
@@ -394,6 +415,7 @@ send_data_via_dns("attack_signal")
 
 📝 nemesis.yaml (Configuration File)
 ```yaml
+
 exploit_mode: "auto"
 payload_type: "machine_code"
 c2_channel: "dns"
@@ -404,6 +426,7 @@ stealth_level: "high"
 
 📝 payloads.json (Payload Settings)
 ```json
+
 {
     "payloads": [
         {
@@ -427,6 +450,7 @@ stealth_level: "high"
 📂 docs/
 
 📝 architecture.md (Technical Design)
+
 ```md
 # NEMESIS Architecture
 NEMESIS is a next-generation offensive security framework designed to bypass modern defensive technologies such as EDRs, WAFs, CDNs, and honeypots.
@@ -435,6 +459,7 @@ NEMESIS is a next-generation offensive security framework designed to bypass mod
 ---
 
 📝 deployment.md (Setup & Usage)
+
 ```md
 # Deploying NEMESIS
 1. Install dependencies:
